@@ -19,11 +19,44 @@
 }
 
 
-    @media (max-width: 768px) {
-  .carousel-inner img {
-    max-height: 300px;
+/* تصاویر به طور پیشفرض برای دسکتاپ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* کانتینر تصاویر */
+.image-container {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Media Query برای موبایل */
+@media (max-width: 768px) {
+  .image-container {
+    width: 95%;  /* تصاویر کمی به لبه‌های موبایل بچسبند */
+  }
+
+  img {
+    width: 100%;  /* تصویر همیشه عرض کامل کانتینر موبایل را می‌گیرد */
+    height: auto; /* نسبت تصویر حفظ شود */
   }
 }
+
+/* Media Query برای موبایل کوچک (مثلاً تلفن‌های کوچک) */
+@media (max-width: 480px) {
+  .image-container {
+    width: 100%; /* کل عرض صفحه */
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
 
     body {
       background-color: #f8f9fa;
