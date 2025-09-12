@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>درباره ما - استاد یار</title>
+  <link rel="icon" href="https://cdn.imgurl.ir/uploads/y525968_logologo.png" type="image/png+xml" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      font-family: 'Vazir', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background-color: #ffffff;
+      color: #2c3e50;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .nav-link.btn {
+      color: #2c3e50 !important; 
+      font-weight: bold;
+      transition: transform 0.7s ease;
+    }
+    .nav-link.btn:hover {
+      transform: scale(1.1);
+      color: #0e20c2 !important;
+    }
+    footer {
+      border-radius: 10px;
+      color: #fff;
+      margin: 40px 20px 20px;
+      padding: 20px 0;
+    }
+    .carousel-inner img {
+      border-radius: 30px;
+      height: 700px;
+    }
+    #ins, #tel, #gml {
+      transition: transform 0.8s ease;
+    }
+    #ins:hover {
+      transform: scale(1.1);
+      color: #E1306C !important;
+    }
+    #tel:hover {
+      transform: scale(1.1);
+      color: #229ED9 !important;
+    }
+    #gml:hover {
+      transform: scale(1.1);
+      color: #EA4335 !important;
+    }
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s ease;
+      cursor: default;
+      background: white;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgb(0 0 0 / 0.15);
+    }
+    h2, h5 {
+      font-weight: 700;
+    }
+    .nav-item{
+      transition: transform 0.5s ease;
+    }
+    .nav-item:hover{
+      transform: scale(1.2);
+    }
+    #as{
+      position: relative;
+      top: 10px;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 1000, once: true });
+    });
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand " href="#"><img src="https://cdn.imgurl.ir/uploads/y525968_logologo.png" width="70" height="70" alt="لوگو"/><span id="as">استاد یار</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="./teacherplus.html">خانه</a></li>
+          <li class="nav-item"><a class="nav-link" href="./about.html">درباره ما</a></li>
+          <li class="nav-item"><a class="nav-link" href="./austadha.html">اساتید</a></li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="formModalLabel">ثبت نام / ورود</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label fw-bold">نام کاربری</label>
+              <input type="text" class="form-control" id="name" placeholder="نام کاربری خود را وارد کنید" required />
+            </div>
+            <div class="mb-3">
+              <label for="pass" class="form-label fw-bold">رمز</label>
+              <input type="password" class="form-control" id="pass" placeholder="رمز خود را وارد کنید" required />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success px-4 fw-bold">ورود</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container my-5 flex-grow-1">
+    <section class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold text-primary mb-3">درباره من</h2>
+      <p class="fs-5 text-muted mx-auto" style="max-width: 800px;">
+        من آرمان نقشبندی هستم؛ برنامه‌نویسی پرانرژی و خلاق با تمرکز بر توسعه وب و حل مسائل پیچیده. از سال ۱۴۰۰ وارد دنیای کدنویسی شدم و در این مسیر با زبان‌هایی مانند
+        <mark class="rounded bg-warning text-dark px-2">HTML، CSS، Python</mark>
+        هدفم ساخت ابزارهایی کاربردی، زیبا و موثره که تجربه کاربر رو بهبود ببخشن.
+      </p>
+    </section>
+
+    <section class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="fw-bold text-success mb-3">هدف من</h2>
+      <p class="fs-5 text-muted mx-auto" style="max-width: 800px;">
+        برنامه‌نویسی برای من فقط نوشتن کد نیست؛ یک مسیر یادگیری، خلاقیت و حل مشکلات واقعی‌ست. دوست دارم با تیم‌های خلاق همکاری کنم، رشد کنم و پروژه‌هایی بسازم که واقعاً تأثیرگذار باشن.
+        اگر دنبال کسی هستی که با انگیزه و دقیق به پروژه‌ات نگاه کنه، خوشحال می‌شم باهات در ارتباط باشم.
+      </p>
+    </section>
+
+    <section class="row justify-content-center gap-4 mb-5" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-md-4 col-sm-6">
+        <div class="card p-4 shadow-sm">
+          <h5 class="fw-bold mb-3">تجربه من</h5>
+          <p class="text-muted">بیش از 3 سال تجربه در توسعه وب، تسلط بر زبان‌های برنامه‌نویسی مختلف     .</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="card p-4 shadow-sm">
+          <h5 class="fw-bold mb-3">تکنولوژی‌ها</h5>
+          <p class="text-muted">HTML, CSS, JavaScript, Python, Bootstrap, Git و ابزارهای توسعه مدرن دیگر.</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="card p-4 shadow-sm">
+          <h5 class="fw-bold mb-3">ارزش‌ها</h5>
+          <p class="text-muted">دقت، خلاقیت، همکاری تیمی و تمرکز بر تجربه کاربر در تمام پروژه‌هایم.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="text-center mb-5" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="fw-bold mb-3 text-primary">راه‌های ارتباطی</h2>
+      <div class="d-flex justify-content-center gap-5 fs-3 text-muted">
+        <a id="gml" href="mailto:astadyar6@gmail.com" class="text-decoration-none" title="ایمیل">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
+      </div>
+    </section>
+
+   
+  </main>
+
+  <footer class="text-center text-dark">
+    <p class="fs-6">تمامی حقوق برای <span class="text-info fw-bold">استاد یار</span> محفوظ است © 2025</p>
+  </footer>
+</body>
+</html>

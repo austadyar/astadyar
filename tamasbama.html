@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="استاد پلاس | آموزش آنلاین با اساتید برتر ایران در تمام مقاطع تحصیلی">
+  <meta name="keywords" content="آموزش آنلاین, تدریس خصوصی, کنکور, استاد پلاس, کلاس مجازی">
+  <title>تماس با ما - استاد یار</title>
+  <link rel="icon" href="https://cdn.imgurl.ir/uploads/y525968_logologo.png" type="image/png+xml" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size:20px;
+    }
+    .nav-item{
+      transition: transform 0.5s ease;
+    }
+    .nav-item:hover{
+      transform: scale(1.2);
+    }
+    #as{
+      position: relative;
+      top: 10px;
+    }
+    .form-box {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    .form-box h2 {
+      color: #0d6efd;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-box textarea {
+      resize: none;
+    }
+    .btn-custom {
+      background-color: #0d6efd;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #084298;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="https://cdn.imgurl.ir/uploads/y525968_logologo.png" width="70" height="70" alt="لوگو" /><span id="as">استاد یار</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="./teacherplus.html">خانه</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">درباره ما</a></li>
+        <li class="nav-item"><a class="nav-link" href="./austadha.html">اساتید</a></li>
+        <li class="nav-item"><a class="nav-link" href="./tamasbama.html">تماس با ما</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<script>
+  // ورود
+  document.getElementById('loginForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const phone = document.getElementById('loginPhone').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+
+    if (!phone || !password) {
+      alert('لطفاً شماره موبایل و رمز عبور را وارد کنید.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message || '✅ ورود موفقیت‌آمیز بود!');
+        document.getElementById('loginForm').reset();
+
+        const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('loginModal'));
+        modal.hide();
+
+        if (result.token) {
+          localStorage.setItem('token', result.token);
+        }
+      } else {
+        alert(result.message || '⚠️ خطا در ورود.');
+      }
+    } catch (error) {
+      alert('❌ خطا در اتصال به سرور.');
+      console.error(error);
+    }
+  });
+
+  // ثبت‌نام
+  document.getElementById('registerForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const phone = document.getElementById('registerPhone').value.trim();
+    const password = document.getElementById('registerPassword').value.trim();
+    const confirm = document.getElementById('registerConfirm').value.trim();
+
+    if (!/^09\d{9}$/.test(phone)) {
+      alert('لطفاً شماره موبایل معتبر وارد کنید.');
+      return;
+    }
+
+    if (password.length < 6) {
+      alert('رمز عبور باید حداقل ۶ کاراکتر باشد.');
+      return;
+    }
+
+    if (password !== confirm) {
+      alert('رمز عبور و تکرار آن یکسان نیستند.');
+      return;
+    }
+
+    try {
+      const res = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert('✅ ثبت‌نام با موفقیت انجام شد.');
+        document.getElementById('registerForm').reset();
+
+        const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('registerModal'));
+        modal.hide();
+      } else {
+        alert('❌ ' + (data.message || 'خطایی در ثبت‌نام رخ داده است.'));
+      }
+    } catch (err) {
+      alert('⚠️ خطا در ارتباط با سرور.');
+      console.error(err);
+    }
+  });
+</script>
+
+<!-- Contact Form -->
+<div class="form-box">
+  <h2>فرم تماس با ما</h2>
+  <form id="contactForm">
+    <div class="mb-3">
+      <label for="mobile" class="form-label">شماره موبایل</label>
+      <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="09123456789" required>
+    </div>
+    <div class="mb-3">
+      <label for="fullname" class="form-label">نام و نام خانوادگی</label>
+      <input type="text" class="form-control" id="fullname" name="fullname" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">پیغام شما</label>
+      <textarea class="form-control" id="message" name="message" rows="5" placeholder="پیام خود را بنویسید..." required></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-custom px-5 py-2 rounded-pill">ارسال</button>
+    </div>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-4 mt-5">
+  <p class="mb-0">© 2025 استاد یار | تمامی حقوق محفوظ است.</p>
+</footer>
+
+<script>
+  AOS.init();
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const mobile = document.getElementById('mobile').value.trim();
+    const fullname = document.getElementById('fullname').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if(mobile === '' || fullname === '' || message === '') {
+      alert('لطفا تمامی فیلدها را پر کنید.');
+      return;
+    }
+
+    alert('پیام شما با موفقیت ارسال شد.');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
