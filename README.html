@@ -57,6 +57,18 @@ img {
   }
 }
 
+.img-wrapper {
+  width: 100%;
+  height: 300px; /* یا هر ارتفاعی که نیاز دارید */
+  overflow: hidden; /* جلوگیری از بیرون زدن تصویر */
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* تصویر کامل داخل div جا می‌شود بدون برش */
+  object-position: center; /* مرکز تصویر نمایش داده می‌شود */
+}
 
     body {
       background-color: #f8f9fa;
